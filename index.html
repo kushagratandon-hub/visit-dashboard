@@ -10,7 +10,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#f0f2f7;color:#1a202c;font-size:13px}
 .nav{background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;position:sticky;top:0;z-index:200;box-shadow:0 1px 6px rgba(0,0,0,.07)}
-.nav-brand{padding:0 18px;height:50px;display:flex;align-items:center;gap:10px;background:#1e40af;border-right:1px solid #1d3faa;flex-shrink:0}
+.nav-brand{padding:0 18px;height:50px;display:flex;align-items:center;gap:10px;background:#1e40af;flex-shrink:0}
 .nav-logo{width:28px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#1e40af}
 .nav-title{font-size:13px;font-weight:700;color:#fff}
 .nav-tabs{display:flex;height:50px;overflow-x:auto}
@@ -29,12 +29,11 @@ body{font-family:'Inter',sans-serif;background:#f0f2f7;color:#1a202c;font-size:1
 .page.active{display:block}
 .fbar{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
 .flabel{font-size:11px;color:#64748b;font-weight:500}
-select,input[type=text],input[type=date]{border:1px solid #e2e8f0;border-radius:6px;padding:5px 10px;font-family:Inter,sans-serif;font-size:12px;color:#1a202c;background:#fff;outline:none;transition:border-color .15s}
+select,input[type=text],input[type=date]{border:1px solid #e2e8f0;border-radius:6px;padding:5px 10px;font-family:Inter,sans-serif;font-size:12px;color:#1a202c;background:#fff;outline:none}
 select:focus,input:focus{border-color:#1e40af;box-shadow:0 0 0 2px rgba(30,64,175,.1)}
 .fcount{margin-left:auto;font-size:11px;color:#64748b;background:#f1f5f9;padding:3px 10px;border-radius:20px}
 .kgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}
-.kpi{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:13px 15px;border-top:3px solid #1e40af;transition:box-shadow .15s}
-.kpi:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.kpi{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:13px 15px;border-top:3px solid #1e40af}
 .kpi.g{border-top-color:#16a34a}.kpi.o{border-top-color:#ea580c}.kpi.r{border-top-color:#dc2626}.kpi.p{border-top-color:#7c3aed}.kpi.y{border-top-color:#d97706}
 .kl{font-size:10px;color:#64748b;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
 .kv{font-size:22px;font-weight:700;color:#1a202c;line-height:1}
@@ -42,7 +41,7 @@ select:focus,input:focus{border-color:#1e40af;box-shadow:0 0 0 2px rgba(30,64,17
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
 .g31{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:12px}
 .ch{padding:11px 15px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;background:#fafbfc}
 .ct{font-size:12px;font-weight:600;color:#1e293b}
 .cb{padding:13px 15px}
@@ -52,8 +51,7 @@ select:focus,input:focus{border-color:#1e40af;box-shadow:0 0 0 2px rgba(30,64,17
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead{position:sticky;top:0;z-index:10}
 thead tr{background:#f8fafc}
-th{padding:8px 11px;text-align:left;font-size:10px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;cursor:pointer;border-bottom:1px solid #e2e8f0}
-th:hover{color:#1e40af}
+th{padding:8px 11px;text-align:left;font-size:10px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;border-bottom:1px solid #e2e8f0}
 td{padding:7px 11px;border-bottom:1px solid #f1f5f9;white-space:nowrap}
 tr:hover td{background:#f8faff}
 tr:last-child td{border-bottom:none}
@@ -61,13 +59,18 @@ tr:last-child td{border-bottom:none}
 .cd{background:#eff6ff;color:#1d4ed8}.cc{background:#f5f3ff;color:#6d28d9}.cds{background:#fff7ed;color:#c2410c}.cg{background:#fefce8;color:#92400e}.cl{background:#f0fdf4;color:#166534}.co{background:#f1f5f9;color:#475569}
 .vb{display:inline-block;min-width:28px;text-align:center;padding:2px 7px;border-radius:5px;font-weight:700;font-size:12px}
 .v0{background:#fef2f2;color:#dc2626}.vl{background:#fff7ed;color:#ea580c}.vm{background:#fefce8;color:#a16207}.vg{background:#f0fdf4;color:#16a34a}.vh{background:#eff6ff;color:#1d4ed8}
+.t-early{background:#dcfce7;color:#166534;padding:2px 8px;border-radius:5px;font-weight:600;font-size:11px;font-family:monospace}
+.t-mid{background:#fefce8;color:#a16207;padding:2px 8px;border-radius:5px;font-weight:600;font-size:11px;font-family:monospace}
+.t-late{background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:5px;font-weight:600;font-size:11px;font-family:monospace}
+.t-none{background:#f1f5f9;color:#94a3b8;padding:2px 8px;border-radius:5px;font-size:11px}
+.ts-pill{display:inline-block;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;padding:1px 7px;border-radius:5px;font-size:10px;font-family:monospace;margin:1px;font-weight:600}
+.ts-pill.first{background:#dcfce7;color:#166534;border-color:#86efac}
 .hm-wrap{overflow-x:auto}
 .hm-dates{display:flex;margin-left:150px;margin-bottom:3px;gap:2px}
 .hm-dh{width:30px;font-size:9px;color:#94a3b8;text-align:center}
 .hm-row{display:flex;align-items:center;gap:2px;margin-bottom:2px}
-.hm-lbl{width:147px;font-size:10px;color:#1e40af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0;cursor:pointer;padding-right:4px}
-.hm-lbl:hover{text-decoration:underline}
-.hm-cell{width:30px;height:24px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;cursor:default}
+.hm-lbl{width:147px;font-size:10px;color:#1e40af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0;padding-right:4px}
+.hm-cell{width:30px;height:24px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600}
 .br-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
 .br-name{width:105px;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#475569}
 .br-track{flex:1;height:8px;background:#f1f5f9;border-radius:4px;overflow:hidden}
@@ -77,8 +80,6 @@ tr:last-child td{border-bottom:none}
 .spin{width:18px;height:18px;border:2px solid #e2e8f0;border-top-color:#1e40af;border-radius:50%;animation:sp 0.8s linear infinite;margin-right:10px}
 @keyframes sp{to{transform:rotate(360deg)}}
 .err{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:12px 16px;border-radius:8px;margin:16px 20px;font-size:13px}
-.stit{font-size:13px;font-weight:700;color:#1e293b;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.stit::after{content:'';flex:1;height:1px;background:#e2e8f0}
 @media(max-width:1100px){.kgrid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){.g2,.g3,.g31{grid-template-columns:1fr}.kgrid{grid-template-columns:repeat(2,1fr)}}
 </style>
@@ -89,9 +90,10 @@ tr:last-child td{border-bottom:none}
   <div class="nav-brand"><div class="nav-logo">DC</div><div class="nav-title">DCF · Visit Tracker</div></div>
   <div class="nav-tabs">
     <div class="tab active" onclick="showTab('overview',this)">📊 Overview</div>
-    <div class="tab" onclick="showTab('fos',this)">👤 FOS Detail</div>
-    <div class="tab" onclick="showTab('manager',this)">👔 Manager View</div>
+    <div class="tab" onclick="showTab('timestamps',this)">🕐 Timestamps</div>
     <div class="tab" onclick="showTab('defaulters',this)">⚠️ Defaulters <span class="badge" id="def-badge">0</span></div>
+    <div class="tab" onclick="showTab('manager',this)">👔 Manager View</div>
+    <div class="tab" onclick="showTab('fos',this)">👤 FOS Detail</div>
   </div>
   <div class="nav-right">
     <div class="live-pill"><div class="ldot"></div> Live</div>
@@ -104,17 +106,13 @@ tr:last-child td{border-bottom:none}
 <div id="error-box"></div>
 
 <div class="page active" id="pg-overview">
-  <div id="loading-overview" class="loading"><div class="spin"></div>Loading data from Google Sheet...</div>
+  <div id="loading-overview" class="loading"><div class="spin"></div>Loading data from Google Sheets...</div>
   <div id="content-overview" style="display:none">
     <div class="fbar">
-      <span class="flabel">Channel</span>
-      <select id="ov-ch" onchange="renderAll()"><option value="">All</option></select>
-      <span class="flabel">City</span>
-      <select id="ov-city" onchange="renderAll()"><option value="">All</option></select>
-      <span class="flabel">RSM</span>
-      <select id="ov-rsm" onchange="renderAll()"><option value="">All</option></select>
-      <span class="flabel">SM</span>
-      <select id="ov-sm" onchange="renderAll()"><option value="">All</option></select>
+      <span class="flabel">Channel</span><select id="ov-ch" onchange="renderAll()"><option value="">All</option></select>
+      <span class="flabel">City</span><select id="ov-city" onchange="renderAll()"><option value="">All</option></select>
+      <span class="flabel">RSM</span><select id="ov-rsm" onchange="renderAll()"><option value="">All</option></select>
+      <span class="flabel">SM</span><select id="ov-sm" onchange="renderAll()"><option value="">All</option></select>
       <input type="text" id="ov-q" placeholder="🔍 Search FOS..." oninput="renderAll()" style="width:165px">
       <div class="fcount" id="ov-cnt">—</div>
     </div>
@@ -131,6 +129,69 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
+<div class="page" id="pg-timestamps">
+  <div class="fbar">
+    <span class="flabel">📅 Select Date</span><input type="date" id="ts-date" onchange="renderTimestamps()">
+    <span class="flabel">SM</span><select id="ts-sm" onchange="renderTimestamps()"><option value="">All</option></select>
+    <span class="flabel">Channel</span><select id="ts-ch" onchange="renderTimestamps()"><option value="">All</option></select>
+    <input type="text" id="ts-q" placeholder="🔍 Search FOS..." oninput="renderTimestamps()" style="width:165px">
+  </div>
+  <div class="g3">
+    <div class="kpi g"><div class="kl">✅ First Visit Before 10AM</div><div class="kv" id="ts-early">0</div><div class="ks">Early starters</div></div>
+    <div class="kpi y"><div class="kl">🕙 First Visit 10AM – 1PM</div><div class="kv" id="ts-mid">0</div><div class="ks">Mid starters</div></div>
+    <div class="kpi r"><div class="kl">🔴 After 1PM or No Visit</div><div class="kv" id="ts-late">0</div><div class="ks">Late / No visit</div></div>
+  </div>
+  <div class="card">
+    <div class="ch"><span class="ct">🕐 First Visit Timestamps — All FOS</span><span class="bdg bdg-b" id="ts-cnt">—</span></div>
+    <div class="tw" style="max-height:70vh"><table>
+      <thead><tr><th>FOS Name</th><th>SM</th><th>Channel</th><th>First Visit (IST)</th><th>Status</th><th>Visits</th><th>All Timestamps</th></tr></thead>
+      <tbody id="ts-bd"></tbody>
+    </table></div>
+  </div>
+</div>
+
+<div class="page" id="pg-defaulters">
+  <div class="fbar">
+    <span class="flabel">📅 Check Date</span><input type="date" id="def-date" onchange="renderDefaulters()">
+    <span class="flabel">Channel</span><select id="def-ch" onchange="renderDefaulters()"><option value="">All</option></select>
+  </div>
+  <div class="g3">
+    <div class="kpi r"><div class="kl">🚫 Zero Visits D-1</div><div class="kv" id="d1-n">—</div><div class="ks">No visit yesterday</div></div>
+    <div class="kpi o"><div class="kl">⏰ Zero till 1PM Today</div><div class="kv" id="pm1-n">—</div><div class="ks">Based on timestamps</div></div>
+    <div class="kpi y"><div class="kl">⏰ Zero till 4PM Today</div><div class="kv" id="pm4-n">—</div><div class="ks">Based on timestamps</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ch"><span class="ct">🚫 D-1 Defaulters</span><span class="bdg bdg-r" id="d1-bdg">—</span></div>
+      <div class="tw" style="max-height:360px"><table><thead><tr><th>FOS</th><th>SM</th><th>Channel</th><th>City</th><th>Dealers</th><th>MTD</th></tr></thead><tbody id="d1-bd"></tbody></table></div>
+    </div>
+    <div class="card">
+      <div class="ch"><span class="ct">⏰ Zero till 1PM Today</span><span class="bdg bdg-o" id="pm1-bdg">—</span></div>
+      <div class="tw" style="max-height:360px"><table><thead><tr><th>FOS</th><th>SM</th><th>Channel</th><th>City</th><th>Dealers</th><th>MTD</th></tr></thead><tbody id="pm1-bd"></tbody></table></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch"><span class="ct">⏰ Zero till 4PM Today</span><span class="bdg bdg-r" id="pm4-bdg">—</span></div>
+    <div class="tw" style="max-height:300px"><table><thead><tr><th>FOS</th><th>SM</th><th>Channel</th><th>City</th><th>Dealers</th><th>MTD</th></tr></thead><tbody id="pm4-bd"></tbody></table></div>
+  </div>
+  <div class="card">
+    <div class="ch"><span class="ct">📉 Lowest Visits MTD (Bottom 25)</span><span class="bdg bdg-o">Ranked</span></div>
+    <div class="tw" style="max-height:300px"><table><thead><tr><th>#</th><th>FOS</th><th>SM</th><th>Channel</th><th>City</th><th>Dealers</th><th>MTD</th><th>Cov%</th></tr></thead><tbody id="low-bd"></tbody></table></div>
+  </div>
+</div>
+
+<div class="page" id="pg-manager">
+  <div class="fbar">
+    <span class="flabel">View</span>
+    <select id="mgr-lvl" onchange="renderManager()"><option value="sm">SM View</option><option value="rsm">RSM View</option></select>
+    <input type="text" id="mgr-q" placeholder="🔍 Search manager..." oninput="renderManager()" style="width:175px">
+  </div>
+  <div class="card">
+    <div class="ch"><span class="ct" id="mgr-title">SM Performance</span><span class="bdg bdg-b" id="mgr-cnt">—</span></div>
+    <div class="tw" style="max-height:70vh"><table><thead><tr><th>Manager</th><th>Team</th><th>Dealers</th><th>MTD</th><th>Unique</th><th>Cov%</th><th>Avg/FOS</th></tr></thead><tbody id="mgr-bd"></tbody></table></div>
+  </div>
+</div>
+
 <div class="page" id="pg-fos">
   <div class="card">
     <div class="ch">
@@ -143,76 +204,21 @@ tr:last-child td{border-bottom:none}
         </select>
       </div>
     </div>
-    <div class="tw" style="max-height:70vh">
-      <table>
-        <thead><tr>
-          <th>FOS Name</th><th>SM</th><th>RSM</th><th>Channel</th><th>City</th>
-          <th>Dealers</th><th>MTD Visits</th><th>Unique MTD</th><th>Coverage %</th>
-        </tr></thead>
-        <tbody id="fos-bd"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="pg-manager">
-  <div class="fbar">
-    <span class="flabel">View</span>
-    <select id="mgr-lvl" onchange="renderManager()"><option value="sm">SM View</option><option value="rsm">RSM View</option></select>
-    <input type="text" id="mgr-q" placeholder="🔍 Search manager..." oninput="renderManager()" style="width:175px">
-  </div>
-  <div class="card">
-    <div class="ch"><span class="ct" id="mgr-title">SM Performance</span><span class="bdg bdg-b" id="mgr-cnt">—</span></div>
-    <div class="tw" style="max-height:70vh">
-      <table>
-        <thead><tr>
-          <th>Manager</th><th>Team Size</th><th>Total Dealers</th><th>Total MTD</th>
-          <th>Unique MTD</th><th>Coverage %</th><th>Avg per FOS</th>
-        </tr></thead>
-        <tbody id="mgr-bd"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="pg-defaulters">
-  <div class="g3" style="margin-bottom:12px">
-    <div class="kpi r"><div class="kl">🚫 Zero Visits MTD</div><div class="kv" id="def-zero">0</div><div class="ks">Inactive FOS this month</div></div>
-    <div class="kpi o"><div class="kl">⚠️ Low Activity (1-5 MTD)</div><div class="kv" id="def-low">0</div><div class="ks">Underperforming</div></div>
-    <div class="kpi y"><div class="kl">📉 Coverage &lt; 25%</div><div class="kv" id="def-cov">0</div><div class="ks">Low dealer reach</div></div>
-  </div>
-  <div class="card">
-    <div class="ch"><span class="ct">🚫 Zero Visits This Month</span><span class="bdg bdg-r" id="zero-cnt">—</span></div>
-    <div class="tw" style="max-height:360px">
-      <table>
-        <thead><tr><th>FOS Name</th><th>SM</th><th>RSM</th><th>Channel</th><th>City</th><th>Dealers</th></tr></thead>
-        <tbody id="zero-bd"></tbody>
-      </table>
-    </div>
-  </div>
-  <div class="card" style="margin-top:12px">
-    <div class="ch"><span class="ct">📉 Lowest Performers (Bottom 25)</span><span class="bdg bdg-o">Active but low</span></div>
-    <div class="tw" style="max-height:360px">
-      <table>
-        <thead><tr><th>#</th><th>FOS Name</th><th>SM</th><th>Channel</th><th>City</th><th>Dealers</th><th>MTD</th><th>Coverage %</th></tr></thead>
-        <tbody id="low-bd"></tbody>
-      </table>
-    </div>
+    <div class="tw" style="max-height:70vh"><table><thead><tr><th>FOS</th><th>SM</th><th>RSM</th><th>Channel</th><th>City</th><th>Dealers</th><th>MTD</th><th>Unique</th><th>Cov%</th></tr></thead><tbody id="fos-bd"></tbody></table></div>
   </div>
 </div>
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// LIVE GOOGLE SHEET SYNC
+// LIVE DATA - TWO GOOGLE SHEETS (FOS summary + Visits_Happens)
 // ════════════════════════════════════════════════════════════════
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS2xsziqavFUxnHCkPQ71eifBaShjm8B8t6clmTQgnLKpQSuAj9hU6FQpfnwOdPI5VTfAsXVDWrDhYn/pub?output=csv";
+const SHEET_FOS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS2xsziqavFUxnHCkPQ71eifBaShjm8B8t6clmTQgnLKpQSuAj9hU6FQpfnwOdPI5VTfAsXVDWrDhYn/pub?output=csv";
+const SHEET_VISITS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS2xsziqavFUxnHCkPQ71eifBaShjm8B8t6clmTQgnLKpQSuAj9hU6FQpfnwOdPI5VTfAsXVDWrDhYn/pub?gid=796988726&single=true&output=csv";
 
-let D = {
-  generated: new Date().toISOString().slice(0,10),
-  date_cols: ["1st Apr","2nd Apr","3rd Apr","4th Apr","5th Apr","6th Apr","7th Apr","8th Apr","9th Apr","10th Apr","11th Apr","12th Apr","13th Apr","14th Apr","15th Apr","16th Apr","17th Apr","18th Apr","19th Apr","20th Apr","21st Apr","22nd Apr","23rd Apr","24th Apr","25th Apr","26th Apr","27th Apr","28th Apr","29th Apr","30th Apr"],
-  fos: []
-};
+const DATE_COLS = ["1st Apr","2nd Apr","3rd Apr","4th Apr","5th Apr","6th Apr","7th Apr","8th Apr","9th Apr","10th Apr","11th Apr","12th Apr","13th Apr","14th Apr","15th Apr","16th Apr","17th Apr","18th Apr","19th Apr","20th Apr","21st Apr","22nd Apr","23rd Apr","24th Apr","25th Apr","26th Apr","27th Apr","28th Apr","29th Apr","30th Apr"];
 
+let FOS_DATA = [];
+let VISITS_DATA = [];
 let charts = {};
 
 function parseCSV(text) {
@@ -235,54 +241,99 @@ function parseCSV(text) {
   return rows;
 }
 
-async function loadSheetData() {
+function utcToDate(utcStr) {
+  if (!utcStr) return null;
+  const d = new Date(utcStr.replace(' ', 'T') + 'Z');
+  return isNaN(d) ? null : d;
+}
+function formatIST(d) {
+  if (!d) return '—';
+  return d.toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false});
+}
+function istDateKey(d) {
+  if (!d) return '';
+  return d.toLocaleDateString('en-CA', {timeZone: 'Asia/Kolkata'});
+}
+function istHour(d) {
+  if (!d) return -1;
+  return parseInt(d.toLocaleString('en-US', {timeZone: 'Asia/Kolkata', hour: '2-digit', hour12: false}));
+}
+function todayIST() {
+  return new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Kolkata'});
+}
+function addDays(dateStr, delta) {
+  const d = new Date(dateStr + 'T00:00:00');
+  d.setDate(d.getDate() + delta);
+  return d.toISOString().slice(0,10);
+}
+
+async function loadFOS() {
+  const res = await fetch(SHEET_FOS_URL + "&t=" + Date.now());
+  if (!res.ok) throw new Error("FOS sheet HTTP " + res.status);
+  const rows = parseCSV(await res.text());
+  const fos = [];
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i];
+    if (!r[0] || !r[0].includes("@")) continue;
+    const visits = {};
+    DATE_COLS.forEach((dc, idx) => { visits[dc] = parseInt(r[11 + idx]) || 0; });
+    fos.push({
+      email: r[0].trim().toLowerCase(),
+      sm: (r[1] || "").trim().toLowerCase(),
+      rsm: (r[2] || "").trim().toLowerCase(),
+      channel: (r[3] || "").trim() || "Other",
+      city: (r[4] || "").trim() || "Unknown",
+      dealers: parseInt(r[5]) || 0,
+      mtd: parseInt(r[6]) || 0,
+      uniqueMTD: parseInt(r[9]) || 0,
+      visits
+    });
+  }
+  return fos;
+}
+
+async function loadVisits() {
+  const res = await fetch(SHEET_VISITS_URL + "&t=" + Date.now());
+  if (!res.ok) throw new Error("Visits sheet HTTP " + res.status);
+  const rows = parseCSV(await res.text());
+  const visits = [];
+  // 0=CREATE_AT, 2=DEALER_CODE, 3=DEALER_ID, 4=START_TIME, 5=END_TIME,
+  // 6=REMARK, 7=STATUS, 9=SM, 10=FOS, 12=Channel, 16=Dealer Name
+  for (let i = 1; i < rows.length; i++) {
+    const r = rows[i];
+    if (!r[10] || !r[4]) continue;
+    const startD = utcToDate(r[4]);
+    if (!startD) continue;
+    visits.push({
+      fos: r[10].trim().toLowerCase(),
+      sm: (r[9] || "").trim().toLowerCase(),
+      channel: (r[12] || "").trim() || "Other",
+      dealer: (r[16] || r[3] || "").trim(),
+      remark: (r[6] || "").trim(),
+      status: (r[7] || "").trim(),
+      start: startD,
+      end: utcToDate(r[5]),
+      dateKey: istDateKey(startD),
+      hour: istHour(startD)
+    });
+  }
+  visits.sort((a,b) => a.start - b.start);
+  return visits;
+}
+
+async function loadAllData() {
   try {
-    const res = await fetch(SHEET_CSV_URL + "&t=" + Date.now());
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const csv = await res.text();
-    const rows = parseCSV(csv);
-
-    // Column map based on your sheet structure:
-    // 0=FOS Name, 1=SM, 2=RSM, 3=Channel, 4=City, 5=Dealers,
-    // 6=MTD Visits, 7=Last Week, 8=Unique Last Week, 9=MTD Unique, 10=Coverage %
-    // 11-40 = daily visits (1st Apr to 30th Apr)
-
-    const fos = [];
-    for (let i = 0; i < rows.length; i++) {
-      const r = rows[i];
-      if (!r[0] || !r[0].includes("@")) continue;
-
-      const visits = {};
-      D.date_cols.forEach((dc, idx) => {
-        visits[dc] = parseInt(r[11 + idx]) || 0;
-      });
-
-      fos.push({
-        email: r[0].trim(),
-        sm: (r[1] || "").trim(),
-        rsm: (r[2] || "").trim(),
-        channel: (r[3] || "").trim() || "Other",
-        city: (r[4] || "").trim() || "Unknown",
-        dealers: parseInt(r[5]) || 0,
-        mtd: parseInt(r[6]) || 0,
-        lastWeek: parseInt(r[7]) || 0,
-        uniqueMTD: parseInt(r[9]) || 0,
-        visits: visits
-      });
-    }
-
-    D.fos = fos;
-    D.generated = new Date().toISOString().slice(0,10);
-
-    const now = new Date().toLocaleTimeString('en-IN', {hour: '2-digit', minute: '2-digit', hour12: true});
+    const [fos, visits] = await Promise.all([loadFOS(), loadVisits()]);
+    FOS_DATA = fos;
+    VISITS_DATA = visits;
+    const now = new Date().toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true});
     document.getElementById('sync-txt').textContent = 'Synced ' + now;
     document.getElementById('error-box').innerHTML = '';
     return true;
   } catch (err) {
-    console.error("Sheet load error:", err);
+    console.error(err);
     document.getElementById('error-box').innerHTML = 
-      '<div class="err">⚠️ Could not load data from Google Sheet: ' + err.message + 
-      '. Make sure the sheet is published to web as CSV. <a href="' + SHEET_CSV_URL + '" target="_blank">Test URL</a></div>';
+      '<div class="err">⚠️ Data load failed: ' + err.message + '. Check both sheet tabs are published to web as CSV.</div>';
     document.getElementById('sync-txt').textContent = 'Sync failed';
     return false;
   }
@@ -290,40 +341,31 @@ async function loadSheetData() {
 
 async function refreshData() {
   const btn = document.getElementById('btn-refresh');
-  btn.disabled = true;
-  btn.textContent = '⟳ Loading...';
-  const ok = await loadSheetData();
-  if (ok) {
-    setupFilters();
-    renderAll();
-  }
-  btn.disabled = false;
-  btn.textContent = '↺ Refresh';
+  btn.disabled = true; btn.textContent = '⟳ Loading...';
+  const ok = await loadAllData();
+  if (ok) { setupFilters(); renderAll(); }
+  btn.disabled = false; btn.textContent = '↺ Refresh';
 }
 
-// ════════════════════════════════════════════════════════════════
-// FILTERS
-// ════════════════════════════════════════════════════════════════
 function unique(arr) { return [...new Set(arr)].filter(x => x).sort(); }
-
-function setupFilters() {
-  const ch = unique(D.fos.map(f => f.channel));
-  const ci = unique(D.fos.map(f => f.city));
-  const rsm = unique(D.fos.map(f => f.rsm));
-  const sm = unique(D.fos.map(f => f.sm));
-
-  fillSelect('ov-ch', ch);
-  fillSelect('ov-city', ci);
-  fillSelect('ov-rsm', rsm);
-  fillSelect('ov-sm', sm);
-}
-
 function fillSelect(id, options) {
   const el = document.getElementById(id);
   if (!el) return;
   const cur = el.value;
   el.innerHTML = '<option value="">All</option>' + options.map(o => `<option value="${o}">${o}</option>`).join('');
   if (options.includes(cur)) el.value = cur;
+}
+function setupFilters() {
+  fillSelect('ov-ch', unique(FOS_DATA.map(f => f.channel)));
+  fillSelect('ov-city', unique(FOS_DATA.map(f => f.city)));
+  fillSelect('ov-rsm', unique(FOS_DATA.map(f => f.rsm)));
+  fillSelect('ov-sm', unique(FOS_DATA.map(f => f.sm)));
+  fillSelect('ts-sm', unique(FOS_DATA.map(f => f.sm)));
+  fillSelect('ts-ch', unique(FOS_DATA.map(f => f.channel)));
+  fillSelect('def-ch', unique(FOS_DATA.map(f => f.channel)));
+  const t = todayIST();
+  if (!document.getElementById('ts-date').value) document.getElementById('ts-date').value = t;
+  if (!document.getElementById('def-date').value) document.getElementById('def-date').value = t;
 }
 
 function getFiltered() {
@@ -332,128 +374,108 @@ function getFiltered() {
   const rsm = document.getElementById('ov-rsm').value;
   const sm = document.getElementById('ov-sm').value;
   const q = document.getElementById('ov-q').value.toLowerCase();
-
-  return D.fos.filter(f =>
-    (!ch || f.channel === ch) &&
-    (!ci || f.city === ci) &&
-    (!rsm || f.rsm === rsm) &&
-    (!sm || f.sm === sm) &&
-    (!q || f.email.toLowerCase().includes(q))
+  return FOS_DATA.filter(f =>
+    (!ch || f.channel === ch) && (!ci || f.city === ci) &&
+    (!rsm || f.rsm === rsm) && (!sm || f.sm === sm) &&
+    (!q || f.email.includes(q))
   );
 }
 
-// ════════════════════════════════════════════════════════════════
-// RENDER: OVERVIEW
-// ════════════════════════════════════════════════════════════════
+function chipHTML(c) {
+  const m = {'Dealer':'cd','C2b Dealer':'cc','C2b DSA':'cds','C2b Growth':'cg','DSA':'cl'};
+  return `<span class="chip ${m[c]||'co'}">${c}</span>`;
+}
+
+// ═══ OVERVIEW ═══
 function renderAll() {
   document.getElementById('loading-overview').style.display = 'none';
   document.getElementById('content-overview').style.display = 'block';
-
-  const filtered = getFiltered();
-  document.getElementById('ov-cnt').textContent = filtered.length + ' FOS';
-
-  renderKPIs(filtered);
-  renderTrend(filtered);
-  renderDonut(filtered);
-  renderCityBars(filtered);
-  renderHeatmap(filtered);
-  renderChannelMix(filtered);
-  renderFOSTable();
-  renderManager();
+  const f = getFiltered();
+  document.getElementById('ov-cnt').textContent = f.length + ' FOS';
+  renderKPIs(f);
+  renderTrend(f);
+  renderDonut(f);
+  renderCityBars(f);
+  renderHeatmap(f);
+  renderChannelMix(f);
+  renderTimestamps();
   renderDefaulters();
+  renderManager();
+  renderFOSTable();
 }
 
 function renderKPIs(data) {
   const totalFOS = data.length;
-  const totalDealers = data.reduce((s, f) => s + f.dealers, 0);
-  const totalMTD = data.reduce((s, f) => s + f.mtd, 0);
-  const totalUnique = data.reduce((s, f) => s + f.uniqueMTD, 0);
+  const totalDealers = data.reduce((s,f) => s+f.dealers, 0);
+  const totalMTD = data.reduce((s,f) => s+f.mtd, 0);
+  const totalUnique = data.reduce((s,f) => s+f.uniqueMTD, 0);
   const activeFOS = data.filter(f => f.mtd > 0).length;
-  const coverage = totalDealers > 0 ? ((totalUnique / totalDealers) * 100).toFixed(1) : 0;
-
+  const cov = totalDealers ? ((totalUnique/totalDealers)*100).toFixed(1) : 0;
   document.getElementById('kpi-row').innerHTML = `
     <div class="kpi"><div class="kl">Total FOS</div><div class="kv">${totalFOS}</div><div class="ks">In selection</div></div>
-    <div class="kpi g"><div class="kl">Active FOS (MTD)</div><div class="kv">${activeFOS}</div><div class="ks">${totalFOS ? Math.round(activeFOS/totalFOS*100) : 0}% active rate</div></div>
-    <div class="kpi p"><div class="kl">Total Dealers Mapped</div><div class="kv">${totalDealers.toLocaleString()}</div><div class="ks">Across selection</div></div>
+    <div class="kpi g"><div class="kl">Active FOS (MTD)</div><div class="kv">${activeFOS}</div><div class="ks">${totalFOS?Math.round(activeFOS/totalFOS*100):0}% active</div></div>
+    <div class="kpi p"><div class="kl">Dealers Mapped</div><div class="kv">${totalDealers.toLocaleString()}</div><div class="ks">Across selection</div></div>
     <div class="kpi y"><div class="kl">Total Visits MTD</div><div class="kv">${totalMTD.toLocaleString()}</div><div class="ks">This month</div></div>
     <div class="kpi o"><div class="kl">Unique Dealers Visited</div><div class="kv">${totalUnique.toLocaleString()}</div><div class="ks">MTD unique</div></div>
-    <div class="kpi"><div class="kl">Coverage %</div><div class="kv">${coverage}%</div><div class="ks">Unique / Mapped</div></div>
-  `;
+    <div class="kpi"><div class="kl">Coverage %</div><div class="kv">${cov}%</div><div class="ks">Unique / Mapped</div></div>`;
 }
 
 function renderTrend(data) {
-  const daily = D.date_cols.map(dc => data.reduce((s, f) => s + (f.visits[dc] || 0), 0));
+  const daily = DATE_COLS.map(dc => data.reduce((s,f) => s + (f.visits[dc]||0), 0));
   drawChart('ch-trend', 'line', {
-    labels: D.date_cols.map(d => d.replace(/(st|nd|rd|th) Apr/, '')),
-    datasets: [{label: 'Visits', data: daily, borderColor: '#1e40af', backgroundColor: 'rgba(30,64,175,.1)', fill: true, tension: .3, pointRadius: 3}]
+    labels: DATE_COLS.map(d => d.replace(/(st|nd|rd|th) Apr/, '')),
+    datasets: [{label:'Visits', data:daily, borderColor:'#1e40af', backgroundColor:'rgba(30,64,175,.1)', fill:true, tension:.3, pointRadius:3}]
   });
 }
 
 function renderDonut(data) {
-  const byChannel = {};
-  data.forEach(f => { byChannel[f.channel] = (byChannel[f.channel] || 0) + f.mtd; });
-  const labels = Object.keys(byChannel).filter(k => byChannel[k] > 0);
-  const values = labels.map(k => byChannel[k]);
-  const colors = ['#1e40af', '#16a34a', '#ea580c', '#dc2626', '#7c3aed', '#d97706', '#0891b2'];
-
+  const by = {};
+  data.forEach(f => { by[f.channel] = (by[f.channel]||0) + f.mtd; });
+  const labels = Object.keys(by).filter(k => by[k] > 0);
+  const values = labels.map(k => by[k]);
+  const colors = ['#1e40af','#16a34a','#ea580c','#dc2626','#7c3aed','#d97706','#0891b2'];
   drawChart('ch-donut', 'doughnut', {
-    labels: labels,
-    datasets: [{data: values, backgroundColor: colors.slice(0, labels.length), borderWidth: 2, borderColor: '#fff'}]
-  }, {plugins: {legend: {position: 'bottom', labels: {font: {size: 10}, boxWidth: 10}}}});
+    labels, datasets:[{data:values, backgroundColor:colors.slice(0,labels.length), borderWidth:2, borderColor:'#fff'}]
+  }, {plugins:{legend:{position:'bottom', labels:{font:{size:10}, boxWidth:10}}}});
 }
 
 function renderCityBars(data) {
-  const byCity = {};
-  data.forEach(f => { byCity[f.city] = (byCity[f.city] || 0) + f.mtd; });
-  const sorted = Object.entries(byCity).sort((a,b) => b[1]-a[1]).slice(0, 8);
+  const by = {};
+  data.forEach(f => { by[f.city] = (by[f.city]||0) + f.mtd; });
+  const sorted = Object.entries(by).sort((a,b) => b[1]-a[1]).slice(0,8);
   const max = sorted[0] ? sorted[0][1] : 1;
-
-  document.getElementById('city-bars').innerHTML = sorted.map(([city, val]) => `
-    <div class="br-row">
-      <div class="br-name">${city}</div>
-      <div class="br-track"><div class="br-fill" style="width:${(val/max)*100}%;background:#1e40af"></div></div>
-      <div class="br-val">${val}</div>
-    </div>
-  `).join('');
+  document.getElementById('city-bars').innerHTML = sorted.map(([c,v]) => `
+    <div class="br-row"><div class="br-name">${c}</div>
+    <div class="br-track"><div class="br-fill" style="width:${(v/max)*100}%;background:#1e40af"></div></div>
+    <div class="br-val">${v}</div></div>`).join('');
 }
 
 function renderHeatmap(data) {
-  const top = [...data].sort((a,b) => b.mtd - a.mtd).slice(0, 25);
-  const last15 = D.date_cols.slice(-15);
-
-  const colorFor = v => v === 0 ? '#f1f5f9' : v <= 1 ? '#dbeafe' : v <= 3 ? '#93c5fd' : v <= 5 ? '#3b82f6' : '#1e40af';
-  const textColor = v => v >= 3 ? '#fff' : '#1e40af';
-
-  const html = `
+  const top = [...data].sort((a,b) => b.mtd - a.mtd).slice(0,25);
+  const last15 = DATE_COLS.slice(-15);
+  const cf = v => v===0 ? '#f1f5f9' : v<=1 ? '#dbeafe' : v<=3 ? '#93c5fd' : v<=5 ? '#3b82f6' : '#1e40af';
+  const tc = v => v>=3 ? '#fff' : '#1e40af';
+  document.getElementById('heatmap').innerHTML = `
     <div class="hm-wrap">
       <div class="hm-dates">${last15.map(d => `<div class="hm-dh">${d.replace(/(st|nd|rd|th) Apr/, '')}</div>`).join('')}</div>
-      ${top.map(f => `
-        <div class="hm-row">
-          <div class="hm-lbl" title="${f.email}">${f.email.split('@')[0]}</div>
-          ${last15.map(d => {
-            const v = f.visits[d] || 0;
-            return `<div class="hm-cell" style="background:${colorFor(v)};color:${textColor(v)}" title="${d}: ${v}">${v || ''}</div>`;
-          }).join('')}
-        </div>
-      `).join('')}
-    </div>
-  `;
-  document.getElementById('heatmap').innerHTML = html;
+      ${top.map(f => `<div class="hm-row">
+        <div class="hm-lbl" title="${f.email}">${f.email.split('@')[0]}</div>
+        ${last15.map(d => { const v = f.visits[d]||0; return `<div class="hm-cell" style="background:${cf(v)};color:${tc(v)}" title="${d}: ${v}">${v||''}</div>`; }).join('')}
+      </div>`).join('')}
+    </div>`;
 }
 
 function renderChannelMix(data) {
-  const byChannel = {};
+  const by = {};
   data.forEach(f => {
-    if (!byChannel[f.channel]) byChannel[f.channel] = {dealers: 0, visits: 0};
-    byChannel[f.channel].dealers += f.dealers;
-    byChannel[f.channel].visits += f.mtd;
+    if (!by[f.channel]) by[f.channel] = {dealers:0, visits:0};
+    by[f.channel].dealers += f.dealers; by[f.channel].visits += f.mtd;
   });
-  const labels = Object.keys(byChannel);
+  const labels = Object.keys(by);
   drawChart('ch-chmix', 'bar', {
-    labels: labels,
-    datasets: [
-      {label: 'Dealers', data: labels.map(k => byChannel[k].dealers), backgroundColor: '#93c5fd'},
-      {label: 'Visits MTD', data: labels.map(k => byChannel[k].visits), backgroundColor: '#1e40af'}
+    labels, datasets: [
+      {label:'Dealers', data:labels.map(k => by[k].dealers), backgroundColor:'#93c5fd'},
+      {label:'Visits MTD', data:labels.map(k => by[k].visits), backgroundColor:'#1e40af'}
     ]
   });
 }
@@ -462,146 +484,177 @@ function drawChart(id, type, data, extraOpts) {
   const ctx = document.getElementById(id);
   if (!ctx) return;
   if (charts[id]) charts[id].destroy();
-  charts[id] = new Chart(ctx, {
-    type: type,
-    data: data,
-    options: Object.assign({
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {legend: {display: type !== 'line'}}
-    }, extraOpts || {})
-  });
+  charts[id] = new Chart(ctx, {type, data, options: Object.assign({
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display: type !== 'line'}}
+  }, extraOpts || {})});
 }
 
-// ════════════════════════════════════════════════════════════════
-// RENDER: FOS TABLE
-// ════════════════════════════════════════════════════════════════
+// ═══ TIMESTAMPS ═══
+function renderTimestamps() {
+  const date = document.getElementById('ts-date').value || todayIST();
+  const sm = document.getElementById('ts-sm').value;
+  const ch = document.getElementById('ts-ch').value;
+  const q = (document.getElementById('ts-q').value || '').toLowerCase();
+
+  const fosMap = {};
+  FOS_DATA.forEach(f => {
+    if ((sm && f.sm !== sm) || (ch && f.channel !== ch)) return;
+    if (q && !f.email.includes(q)) return;
+    fosMap[f.email] = {info:f, visits:[]};
+  });
+  VISITS_DATA.filter(v => v.dateKey === date).forEach(v => {
+    if (fosMap[v.fos]) fosMap[v.fos].visits.push(v);
+  });
+
+  let early = 0, mid = 0, late = 0;
+  const rows = Object.values(fosMap).map(x => {
+    x.visits.sort((a,b) => a.start - b.start);
+    const first = x.visits[0];
+    let cat = 'none';
+    if (first) {
+      const h = first.hour;
+      if (h < 10) { cat = 'early'; early++; }
+      else if (h < 13) { cat = 'mid'; mid++; }
+      else { cat = 'late'; late++; }
+    } else { late++; }
+    return {...x, first, cat};
+  });
+
+  document.getElementById('ts-early').textContent = early;
+  document.getElementById('ts-mid').textContent = mid;
+  document.getElementById('ts-late').textContent = late;
+  document.getElementById('ts-cnt').textContent = rows.length + ' FOS';
+
+  rows.sort((a,b) => {
+    const hasA = a.first ? 1 : 0;
+    const hasB = b.first ? 1 : 0;
+    if (hasA !== hasB) return hasA - hasB;
+    if (!a.first) return 0;
+    return b.first.start - a.first.start; // latest first for attention
+  });
+
+  document.getElementById('ts-bd').innerHTML = rows.map(x => {
+    const f = x.info;
+    const firstTxt = x.first ? `<span class="t-${x.cat}">${formatIST(x.first.start)}</span>` : `<span class="t-none">No visit</span>`;
+    const stat = x.cat === 'early' ? '✅ Early' : x.cat === 'mid' ? '🕙 Mid' : x.cat === 'late' ? '🔴 Late' : '⚫ No visit';
+    const pills = x.visits.map((v,i) => `<span class="ts-pill ${i===0?'first':''}" title="${v.dealer}">${formatIST(v.start)}</span>`).join('');
+    return `<tr>
+      <td style="font-weight:500">${f.email.split('@')[0]}</td>
+      <td style="color:#64748b;font-size:11px">${(f.sm||'').split('@')[0]}</td>
+      <td>${chipHTML(f.channel)}</td>
+      <td>${firstTxt}</td>
+      <td>${stat}</td>
+      <td><span class="vb ${x.visits.length===0?'v0':x.visits.length<=2?'vl':x.visits.length<=4?'vm':'vg'}">${x.visits.length}</span></td>
+      <td>${pills || '<span style="color:#94a3b8;font-size:10px">—</span>'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ═══ DEFAULTERS ═══
+function renderDefaulters() {
+  const today = document.getElementById('def-date').value || todayIST();
+  const ch = document.getElementById('def-ch').value;
+  const d1 = addDays(today, -1);
+
+  const filtered = FOS_DATA.filter(f => !ch || f.channel === ch);
+
+  const byFOSd1 = {}, byFOStoday = {};
+  VISITS_DATA.forEach(v => {
+    if (v.dateKey === d1) (byFOSd1[v.fos] = byFOSd1[v.fos] || []).push(v);
+    if (v.dateKey === today) (byFOStoday[v.fos] = byFOStoday[v.fos] || []).push(v);
+  });
+
+  const d1Def = filtered.filter(f => !byFOSd1[f.email] || byFOSd1[f.email].length === 0);
+  const zero1pm = filtered.filter(f => !(byFOStoday[f.email] || []).some(v => v.hour < 13));
+  const zero4pm = filtered.filter(f => !(byFOStoday[f.email] || []).some(v => v.hour < 16));
+
+  document.getElementById('d1-n').textContent = d1Def.length;
+  document.getElementById('pm1-n').textContent = zero1pm.length;
+  document.getElementById('pm4-n').textContent = zero4pm.length;
+  document.getElementById('def-badge').textContent = d1Def.length;
+  document.getElementById('d1-bdg').textContent = d1Def.length;
+  document.getElementById('pm1-bdg').textContent = zero1pm.length;
+  document.getElementById('pm4-bdg').textContent = zero4pm.length;
+
+  const row = f => `<tr>
+    <td>${f.email.split('@')[0]}</td>
+    <td style="font-size:11px;color:#64748b">${(f.sm||'').split('@')[0]}</td>
+    <td>${chipHTML(f.channel)}</td>
+    <td>${f.city}</td><td>${f.dealers}</td>
+    <td><span class="vb ${f.mtd===0?'v0':'vl'}">${f.mtd}</span></td>
+  </tr>`;
+  const empty = m => `<tr><td colspan="6" style="text-align:center;color:#94a3b8;padding:20px">${m}</td></tr>`;
+
+  document.getElementById('d1-bd').innerHTML = d1Def.slice(0,100).map(row).join('') || empty('No defaulters 🎉');
+  document.getElementById('pm1-bd').innerHTML = zero1pm.slice(0,100).map(row).join('') || empty('All FOS active before 1PM ✓');
+  document.getElementById('pm4-bd').innerHTML = zero4pm.slice(0,100).map(row).join('') || empty('All FOS active before 4PM ✓');
+
+  const bottom25 = filtered.filter(f => f.mtd > 0).sort((a,b) => a.mtd - b.mtd).slice(0, 25);
+  document.getElementById('low-bd').innerHTML = bottom25.map((f,i) => {
+    const cov = f.dealers ? (f.uniqueMTD/f.dealers*100).toFixed(1) : 0;
+    return `<tr>
+      <td>${i+1}</td><td>${f.email.split('@')[0]}</td>
+      <td style="font-size:11px;color:#64748b">${(f.sm||'').split('@')[0]}</td>
+      <td>${chipHTML(f.channel)}</td><td>${f.city}</td><td>${f.dealers}</td>
+      <td><span class="vb vl">${f.mtd}</span></td><td>${cov}%</td>
+    </tr>`;
+  }).join('');
+}
+
+// ═══ MANAGER ═══
+function renderManager() {
+  const lvl = document.getElementById('mgr-lvl').value;
+  const q = document.getElementById('mgr-q').value.toLowerCase();
+  const key = lvl === 'sm' ? 'sm' : 'rsm';
+  const groups = {};
+  FOS_DATA.forEach(f => {
+    const k = f[key]; if (!k) return;
+    if (!groups[k]) groups[k] = {team:0, dealers:0, mtd:0, unique:0};
+    groups[k].team++; groups[k].dealers += f.dealers;
+    groups[k].mtd += f.mtd; groups[k].unique += f.uniqueMTD;
+  });
+  const rows = Object.entries(groups).filter(([k]) => !q || k.toLowerCase().includes(q))
+    .sort((a,b) => b[1].mtd - a[1].mtd);
+  document.getElementById('mgr-title').textContent = (lvl === 'sm' ? 'SM' : 'RSM') + ' Performance';
+  document.getElementById('mgr-cnt').textContent = rows.length + ' managers';
+  document.getElementById('mgr-bd').innerHTML = rows.map(([n,g]) => {
+    const cov = g.dealers ? (g.unique/g.dealers*100).toFixed(1) : 0;
+    const avg = g.team ? (g.mtd/g.team).toFixed(1) : 0;
+    return `<tr>
+      <td style="font-weight:500">${n.split('@')[0]}</td>
+      <td>${g.team}</td><td>${g.dealers}</td>
+      <td><span class="vb vh">${g.mtd}</span></td>
+      <td>${g.unique}</td><td>${cov}%</td><td>${avg}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ═══ FOS TABLE ═══
 function renderFOSTable() {
   const sort = document.getElementById('tbl-sort').value;
   let data = [...getFiltered()];
-
   const sorters = {
-    mtd_d: (a,b) => b.mtd - a.mtd,
-    mtd_a: (a,b) => a.mtd - b.mtd,
-    dlr_d: (a,b) => b.dealers - a.dealers,
-    cov_d: (a,b) => (b.dealers ? b.uniqueMTD/b.dealers : 0) - (a.dealers ? a.uniqueMTD/a.dealers : 0)
+    mtd_d:(a,b)=>b.mtd-a.mtd, mtd_a:(a,b)=>a.mtd-b.mtd,
+    dlr_d:(a,b)=>b.dealers-a.dealers,
+    cov_d:(a,b)=>(b.dealers?b.uniqueMTD/b.dealers:0)-(a.dealers?a.uniqueMTD/a.dealers:0)
   };
   data.sort(sorters[sort]);
-
   document.getElementById('tbl-cnt').textContent = data.length + ' rows';
-
   const vb = v => `<span class="vb ${v===0?'v0':v<=3?'vl':v<=10?'vm':v<=25?'vg':'vh'}">${v}</span>`;
-  const chip = c => {
-    const m = {'Dealer':'cd','C2b Dealer':'cc','C2b DSA':'cds','C2b Growth':'cg','DSA':'cl'};
-    return `<span class="chip ${m[c]||'co'}">${c}</span>`;
-  };
-
   document.getElementById('fos-bd').innerHTML = data.map(f => {
     const cov = f.dealers ? (f.uniqueMTD/f.dealers*100).toFixed(1) : 0;
     return `<tr>
       <td style="font-weight:500">${f.email.split('@')[0]}</td>
       <td style="color:#64748b;font-size:11px">${(f.sm||'').split('@')[0]}</td>
       <td style="color:#64748b;font-size:11px">${(f.rsm||'').split('@')[0]}</td>
-      <td>${chip(f.channel)}</td>
-      <td>${f.city}</td>
-      <td>${f.dealers}</td>
-      <td>${vb(f.mtd)}</td>
-      <td>${f.uniqueMTD}</td>
-      <td>${cov}%</td>
+      <td>${chipHTML(f.channel)}</td><td>${f.city}</td>
+      <td>${f.dealers}</td><td>${vb(f.mtd)}</td><td>${f.uniqueMTD}</td><td>${cov}%</td>
     </tr>`;
   }).join('');
 }
 
-// ════════════════════════════════════════════════════════════════
-// RENDER: MANAGER VIEW
-// ════════════════════════════════════════════════════════════════
-function renderManager() {
-  const lvl = document.getElementById('mgr-lvl').value;
-  const q = document.getElementById('mgr-q').value.toLowerCase();
-  const key = lvl === 'sm' ? 'sm' : 'rsm';
-
-  const groups = {};
-  D.fos.forEach(f => {
-    const k = f[key];
-    if (!k) return;
-    if (!groups[k]) groups[k] = {team: 0, dealers: 0, mtd: 0, unique: 0};
-    groups[k].team++;
-    groups[k].dealers += f.dealers;
-    groups[k].mtd += f.mtd;
-    groups[k].unique += f.uniqueMTD;
-  });
-
-  let rows = Object.entries(groups)
-    .filter(([k]) => !q || k.toLowerCase().includes(q))
-    .sort((a,b) => b[1].mtd - a[1].mtd);
-
-  document.getElementById('mgr-title').textContent = (lvl === 'sm' ? 'SM' : 'RSM') + ' Performance';
-  document.getElementById('mgr-cnt').textContent = rows.length + ' managers';
-
-  document.getElementById('mgr-bd').innerHTML = rows.map(([name, g]) => {
-    const cov = g.dealers ? (g.unique/g.dealers*100).toFixed(1) : 0;
-    const avg = g.team ? (g.mtd/g.team).toFixed(1) : 0;
-    return `<tr>
-      <td style="font-weight:500">${name.split('@')[0]}</td>
-      <td>${g.team}</td>
-      <td>${g.dealers}</td>
-      <td><span class="vb vh">${g.mtd}</span></td>
-      <td>${g.unique}</td>
-      <td>${cov}%</td>
-      <td>${avg}</td>
-    </tr>`;
-  }).join('');
-}
-
-// ════════════════════════════════════════════════════════════════
-// RENDER: DEFAULTERS
-// ════════════════════════════════════════════════════════════════
-function renderDefaulters() {
-  const zero = D.fos.filter(f => f.mtd === 0);
-  const low = D.fos.filter(f => f.mtd > 0 && f.mtd <= 5);
-  const lowCov = D.fos.filter(f => f.dealers > 0 && (f.uniqueMTD/f.dealers*100) < 25);
-
-  document.getElementById('def-zero').textContent = zero.length;
-  document.getElementById('def-low').textContent = low.length;
-  document.getElementById('def-cov').textContent = lowCov.length;
-  document.getElementById('def-badge').textContent = zero.length;
-  document.getElementById('zero-cnt').textContent = zero.length + ' FOS';
-
-  const chip = c => {
-    const m = {'Dealer':'cd','C2b Dealer':'cc','C2b DSA':'cds','C2b Growth':'cg','DSA':'cl'};
-    return `<span class="chip ${m[c]||'co'}">${c}</span>`;
-  };
-
-  document.getElementById('zero-bd').innerHTML = zero.slice(0, 100).map(f => `
-    <tr>
-      <td>${f.email.split('@')[0]}</td>
-      <td style="font-size:11px;color:#64748b">${(f.sm||'').split('@')[0]}</td>
-      <td style="font-size:11px;color:#64748b">${(f.rsm||'').split('@')[0]}</td>
-      <td>${chip(f.channel)}</td>
-      <td>${f.city}</td>
-      <td>${f.dealers}</td>
-    </tr>
-  `).join('');
-
-  const bottom25 = D.fos.filter(f => f.mtd > 0).sort((a,b) => a.mtd - b.mtd).slice(0, 25);
-  document.getElementById('low-bd').innerHTML = bottom25.map((f, i) => {
-    const cov = f.dealers ? (f.uniqueMTD/f.dealers*100).toFixed(1) : 0;
-    return `<tr>
-      <td>${i+1}</td>
-      <td>${f.email.split('@')[0]}</td>
-      <td style="font-size:11px;color:#64748b">${(f.sm||'').split('@')[0]}</td>
-      <td>${chip(f.channel)}</td>
-      <td>${f.city}</td>
-      <td>${f.dealers}</td>
-      <td><span class="vb vl">${f.mtd}</span></td>
-      <td>${cov}%</td>
-    </tr>`;
-  }).join('');
-}
-
-// ════════════════════════════════════════════════════════════════
-// NAVIGATION
-// ════════════════════════════════════════════════════════════════
+// ═══ NAV ═══
 function showTab(name, el) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -609,24 +662,19 @@ function showTab(name, el) {
   el.classList.add('active');
 }
 
-// ════════════════════════════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════════════════════════════
+// ═══ INIT ═══
 async function init() {
-  const ok = await loadSheetData();
+  const ok = await loadAllData();
   if (!ok) {
-    document.getElementById('loading-overview').innerHTML = '<div style="color:#dc2626">Failed to load data. See error above.</div>';
+    document.getElementById('loading-overview').innerHTML = '<div style="color:#dc2626">Failed to load data.</div>';
     return;
   }
   setupFilters();
   renderAll();
 }
-
 init();
-
-// Auto-refresh every 5 minutes
 setInterval(async () => {
-  const ok = await loadSheetData();
+  const ok = await loadAllData();
   if (ok) { setupFilters(); renderAll(); }
 }, 5 * 60 * 1000);
 </script>
