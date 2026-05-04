@@ -67,10 +67,10 @@ tr:last-child td{border-bottom:none}
 .ts-pill.first{background:#dcfce7;color:#166534;border-color:#86efac}
 .hm-wrap{overflow-x:auto}
 .hm-dates{display:flex;margin-left:150px;margin-bottom:3px;gap:2px}
-.hm-dh{width:30px;font-size:9px;color:#94a3b8;text-align:center}
+.hm-dh{width:26px;font-size:9px;color:#94a3b8;text-align:center}
 .hm-row{display:flex;align-items:center;gap:2px;margin-bottom:2px}
 .hm-lbl{width:147px;font-size:10px;color:#1e40af;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0;padding-right:4px}
-.hm-cell{width:30px;height:24px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600}
+.hm-cell{width:26px;height:24px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600}
 .br-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
 .br-name{width:105px;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#475569}
 .br-track{flex:1;height:8px;background:#f1f5f9;border-radius:4px;overflow:hidden}
@@ -118,12 +118,12 @@ tr:last-child td{border-bottom:none}
     </div>
     <div class="kgrid" id="kpi-row"></div>
     <div class="g3">
-      <div class="card"><div class="ch"><span class="ct">📈 Daily Visits Trend (MTD)</span><span class="bdg bdg-b">Apr</span></div><div class="cb" style="padding:8px 12px"><canvas id="ch-trend" height="155"></canvas></div></div>
+      <div class="card"><div class="ch"><span class="ct">📈 Daily Visits Trend (MTD)</span><span class="bdg bdg-b" id="trend-badge">—</span></div><div class="cb" style="padding:8px 12px"><canvas id="ch-trend" height="155"></canvas></div></div>
       <div class="card"><div class="ch"><span class="ct">🍩 Channel Breakdown</span><span class="bdg bdg-b">MTD</span></div><div class="cb" style="padding:8px 12px"><canvas id="ch-donut" height="155"></canvas></div></div>
       <div class="card"><div class="ch"><span class="ct">🏙️ Top Cities</span><span class="bdg bdg-b">MTD Visits</span></div><div class="cb" id="city-bars"></div></div>
     </div>
     <div class="g31">
-      <div class="card"><div class="ch"><span class="ct">🔥 FOS Activity Heatmap</span><span class="bdg bdg-b">Top 25 · Last 15 days</span></div><div class="cb" style="padding:10px 12px" id="heatmap"></div></div>
+      <div class="card"><div class="ch"><span class="ct">🔥 FOS Activity Heatmap</span><span class="bdg bdg-b" id="heatmap-badge">Top 25 · MTD</span></div><div class="cb" style="padding:10px 12px" id="heatmap"></div></div>
       <div class="card"><div class="ch"><span class="ct">📊 Channel Mix</span><span class="bdg bdg-b">Dealers vs Visits</span></div><div class="cb" style="padding:8px 12px"><canvas id="ch-chmix" height="200"></canvas></div></div>
     </div>
   </div>
@@ -267,6 +267,26 @@ function addDays(dateStr, delta) {
   return d.toISOString().slice(0,10);
 }
 
+// ════════════════════════════════════════════════════════════════
+// Returns all date keys from 1st of current month → today (IST)
+// e.g. in May: ["2026-05-01", "2026-05-02", ... "2026-05-04"]
+// Automatically rolls over to June, July etc. — no code change needed
+// ════════════════════════════════════════════════════════════════
+function getMTDKeys() {
+  const todayKey = todayIST();
+  const [year, month, day] = todayKey.split('-').map(Number);
+  const keys = [];
+  for (let d = 1; d <= day; d++) {
+    keys.push(`${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
+  }
+  return keys;
+}
+
+function currentMonthName() {
+  const todayKey = todayIST();
+  return new Date(todayKey + 'T00:00:00').toLocaleString('en-IN', {month: 'long'});
+}
+
 async function loadFOS() {
   const res = await fetch(SHEET_FOS_URL + "&t=" + Date.now());
   if (!res.ok) throw new Error("FOS sheet HTTP " + res.status);
@@ -297,8 +317,6 @@ async function loadVisits() {
   if (!res.ok) throw new Error("Visits sheet HTTP " + res.status);
   const rows = parseCSV(await res.text());
   const visits = [];
-  // 0=CREATE_AT, 2=DEALER_CODE, 3=DEALER_ID, 4=START_TIME, 5=END_TIME,
-  // 6=REMARK, 7=STATUS, 9=SM, 10=FOS, 12=Channel, 16=Dealer Name
   for (let i = 1; i < rows.length; i++) {
     const r = rows[i];
     if (!r[10] || !r[4]) continue;
@@ -332,7 +350,7 @@ async function loadAllData() {
     return true;
   } catch (err) {
     console.error(err);
-    document.getElementById('error-box').innerHTML = 
+    document.getElementById('error-box').innerHTML =
       '<div class="err">⚠️ Data load failed: ' + err.message + '. Check both sheet tabs are published to web as CSV.</div>';
     document.getElementById('sync-txt').textContent = 'Sync failed';
     return false;
@@ -422,6 +440,8 @@ function renderKPIs(data) {
 
 function renderTrend(data) {
   const daily = DATE_COLS.map(dc => data.reduce((s,f) => s + (f.visits[dc]||0), 0));
+  const monthName = currentMonthName();
+  document.getElementById('trend-badge').textContent = monthName;
   drawChart('ch-trend', 'line', {
     labels: DATE_COLS.map(d => d.replace(/(st|nd|rd|th) Apr/, '')),
     datasets: [{label:'Visits', data:daily, borderColor:'#1e40af', backgroundColor:'rgba(30,64,175,.1)', fill:true, tension:.3, pointRadius:3}]
@@ -450,18 +470,44 @@ function renderCityBars(data) {
     <div class="br-val">${v}</div></div>`).join('');
 }
 
+// ════════════════════════════════════════════════════════════════
+// HEATMAP — MTD (1st of current month → today), live from VISITS_DATA
+// Automatically works for any month — no hardcoded dates
+// ════════════════════════════════════════════════════════════════
 function renderHeatmap(data) {
-  const top = [...data].sort((a,b) => b.mtd - a.mtd).slice(0,25);
-  const last15 = DATE_COLS.slice(-15);
-  const cf = v => v===0 ? '#f1f5f9' : v<=1 ? '#dbeafe' : v<=3 ? '#93c5fd' : v<=5 ? '#3b82f6' : '#1e40af';
-  const tc = v => v>=3 ? '#fff' : '#1e40af';
+  const top = [...data].sort((a,b) => b.mtd - a.mtd).slice(0, 25);
+
+  // Build MTD date keys: "2026-05-01" ... "2026-05-04" (today)
+  const mtdKeys = getMTDKeys();
+  const monthName = currentMonthName();
+
+  // Update badge
+  document.getElementById('heatmap-badge').textContent = `Top 25 · ${monthName} MTD`;
+
+  // Aggregate visit counts per FOS per date from live VISITS_DATA
+  const visitCounts = {};
+  VISITS_DATA.forEach(v => {
+    if (!visitCounts[v.fos]) visitCounts[v.fos] = {};
+    visitCounts[v.fos][v.dateKey] = (visitCounts[v.fos][v.dateKey] || 0) + 1;
+  });
+
+  const cf = v => v === 0 ? '#f1f5f9' : v <= 1 ? '#dbeafe' : v <= 3 ? '#93c5fd' : v <= 5 ? '#3b82f6' : '#1e40af';
+  const tc = v => v >= 3 ? '#fff' : '#1e40af';
+  const dayNum = dk => parseInt(dk.split('-')[2]);
+
   document.getElementById('heatmap').innerHTML = `
     <div class="hm-wrap">
-      <div class="hm-dates">${last15.map(d => `<div class="hm-dh">${d.replace(/(st|nd|rd|th) Apr/, '')}</div>`).join('')}</div>
-      ${top.map(f => `<div class="hm-row">
-        <div class="hm-lbl" title="${f.email}">${f.email.split('@')[0]}</div>
-        ${last15.map(d => { const v = f.visits[d]||0; return `<div class="hm-cell" style="background:${cf(v)};color:${tc(v)}" title="${d}: ${v}">${v||''}</div>`; }).join('')}
-      </div>`).join('')}
+      <div class="hm-dates">
+        ${mtdKeys.map(dk => `<div class="hm-dh">${dayNum(dk)}</div>`).join('')}
+      </div>
+      ${top.map(f => `
+        <div class="hm-row">
+          <div class="hm-lbl" title="${f.email}">${f.email.split('@')[0]}</div>
+          ${mtdKeys.map(dk => {
+            const v = (visitCounts[f.email] || {})[dk] || 0;
+            return `<div class="hm-cell" style="background:${cf(v)};color:${tc(v)}" title="${dk}: ${v} visits">${v || ''}</div>`;
+          }).join('')}
+        </div>`).join('')}
     </div>`;
 }
 
@@ -531,7 +577,7 @@ function renderTimestamps() {
     const hasB = b.first ? 1 : 0;
     if (hasA !== hasB) return hasA - hasB;
     if (!a.first) return 0;
-    return b.first.start - a.first.start; // latest first for attention
+    return b.first.start - a.first.start;
   });
 
   document.getElementById('ts-bd').innerHTML = rows.map(x => {
