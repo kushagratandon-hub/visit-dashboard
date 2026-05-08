@@ -52,7 +52,7 @@ table{width:100%;border-collapse:collapse;font-size:12px}
 thead{position:sticky;top:0;z-index:10}
 thead tr{background:#f8fafc}
 th{padding:8px 11px;text-align:left;font-size:10px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;border-bottom:1px solid #e2e8f0}
-td{padding:7px 11px;border-bottom:1px solid #f1f5f9;white-space:nowrap}
+td{padding:7px 11px;border-bottom:1px solid #f1f5f9;white-space:nowrap;vertical-align:top}
 tr:hover td{background:#f8faff}
 tr:last-child td{border-bottom:none}
 .chip{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600}
@@ -63,8 +63,25 @@ tr:last-child td{border-bottom:none}
 .t-mid{background:#fefce8;color:#a16207;padding:2px 8px;border-radius:5px;font-weight:600;font-size:11px;font-family:monospace}
 .t-late{background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:5px;font-weight:600;font-size:11px;font-family:monospace}
 .t-none{background:#f1f5f9;color:#94a3b8;padding:2px 8px;border-radius:5px;font-size:11px}
-.ts-pill{display:inline-block;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;padding:1px 7px;border-radius:5px;font-size:10px;font-family:monospace;margin:1px;font-weight:600}
-.ts-pill.first{background:#dcfce7;color:#166534;border-color:#86efac}
+
+/* First-visit cell with dealer name beneath the time */
+.fv-wrap{display:flex;flex-direction:column;gap:3px;min-width:130px}
+.fv-dlr{font-size:10px;color:#64748b;font-weight:500;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fv-code{font-family:monospace;color:#94a3b8;font-size:9px}
+
+/* Visit detail cards in "Visits Detail" column */
+.visits-cell{white-space:normal;min-width:300px;max-width:520px}
+.vcard{display:inline-flex;flex-direction:column;background:#f8faff;border:1px solid #dbeafe;border-radius:6px;padding:4px 8px;margin:2px;font-size:10px;vertical-align:top;min-width:165px;max-width:230px;line-height:1.4}
+.vcard.first{background:#f0fdf4;border-color:#86efac}
+.vcard-top{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.vcard-dlr{font-weight:600;color:#1e293b;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.vcard-code{font-family:monospace;color:#94a3b8;font-size:9px;flex-shrink:0}
+.vcard-times{color:#475569;font-family:monospace;font-size:10px;margin-top:1px;display:flex;align-items:center;gap:4px}
+.vcard-arrow{color:#94a3b8}
+.vcard-out-missing{color:#ea580c;font-style:italic;font-family:Inter,sans-serif;font-size:9px}
+.vcard-dur{color:#16a34a;font-size:9px;font-weight:600;margin-left:auto}
+.vcard.first .vcard-dur{color:#15803d}
+
 .hm-wrap{overflow-x:auto}
 .hm-dates{display:flex;margin-left:150px;margin-bottom:3px;gap:2px}
 .hm-dh{width:26px;font-size:9px;color:#94a3b8;text-align:center}
@@ -134,7 +151,7 @@ tr:last-child td{border-bottom:none}
     <span class="flabel">📅 Select Date</span><input type="date" id="ts-date" onchange="renderTimestamps()">
     <span class="flabel">SM</span><select id="ts-sm" onchange="renderTimestamps()"><option value="">All</option></select>
     <span class="flabel">Channel</span><select id="ts-ch" onchange="renderTimestamps()"><option value="">All</option></select>
-    <input type="text" id="ts-q" placeholder="🔍 Search FOS..." oninput="renderTimestamps()" style="width:165px">
+    <input type="text" id="ts-q" placeholder="🔍 Search FOS or dealer..." oninput="renderTimestamps()" style="width:200px">
   </div>
   <div class="g3">
     <div class="kpi g"><div class="kl">✅ First Visit Before 10AM</div><div class="kv" id="ts-early">0</div><div class="ks">Early starters</div></div>
@@ -142,9 +159,9 @@ tr:last-child td{border-bottom:none}
     <div class="kpi r"><div class="kl">🔴 After 1PM or No Visit</div><div class="kv" id="ts-late">0</div><div class="ks">Late / No visit</div></div>
   </div>
   <div class="card">
-    <div class="ch"><span class="ct">🕐 First Visit Timestamps — All FOS</span><span class="bdg bdg-b" id="ts-cnt">—</span></div>
-    <div class="tw" style="max-height:70vh"><table>
-      <thead><tr><th>FOS Name</th><th>SM</th><th>Channel</th><th>First Visit (IST)</th><th>Status</th><th>Visits</th><th>All Timestamps</th></tr></thead>
+    <div class="ch"><span class="ct">🕐 First Visit + All Dealer Check-Ins / Check-Outs</span><span class="bdg bdg-b" id="ts-cnt">—</span></div>
+    <div class="tw" style="max-height:75vh"><table>
+      <thead><tr><th>FOS Name</th><th>SM</th><th>Channel</th><th>First Visit</th><th>Status</th><th>Visits</th><th>Visits Detail (Dealer · Check-In → Check-Out · Duration)</th></tr></thead>
       <tbody id="ts-bd"></tbody>
     </table></div>
   </div>
@@ -266,11 +283,24 @@ function addDays(dateStr, delta) {
   d.setDate(d.getDate() + delta);
   return d.toISOString().slice(0,10);
 }
+function durationMins(start, end) {
+  if (!start || !end) return null;
+  const m = Math.round((end - start) / 60000);
+  return m >= 0 ? m : null;
+}
+function formatDur(mins) {
+  if (mins == null) return '';
+  if (mins < 60) return mins + 'm';
+  const h = Math.floor(mins/60), m = mins % 60;
+  return m === 0 ? h + 'h' : h + 'h ' + m + 'm';
+}
+function escapeHTML(s) {
+  if (!s) return '';
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 
 // ════════════════════════════════════════════════════════════════
 // Returns all date keys from 1st of current month → today (IST)
-// e.g. in May: ["2026-05-01", "2026-05-02", ... "2026-05-04"]
-// Automatically rolls over to June, July etc. — no code change needed
 // ════════════════════════════════════════════════════════════════
 function getMTDKeys() {
   const todayKey = todayIST();
@@ -312,6 +342,18 @@ async function loadFOS() {
   return fos;
 }
 
+// ════════════════════════════════════════════════════════════════
+// LOAD VISITS — column map (Visits_Happens sheet):
+//   C  (idx 2)  → Dealership Name
+//   E  (idx 4)  → Check-In  (UTC)
+//   F  (idx 5)  → Check-Out (UTC)   ← NEWLY EXPOSED
+//   G  (idx 6)  → Remark
+//   H  (idx 7)  → Status
+//   J  (idx 9)  → SM email
+//   K  (idx 10) → FOS email
+//   M  (idx 12) → Channel
+//   T  (idx 19) → Dealership Code   ← NEWLY EXPOSED
+// ════════════════════════════════════════════════════════════════
 async function loadVisits() {
   const res = await fetch(SHEET_VISITS_URL + "&t=" + Date.now());
   if (!res.ok) throw new Error("Visits sheet HTTP " + res.status);
@@ -322,15 +364,18 @@ async function loadVisits() {
     if (!r[10] || !r[4]) continue;
     const startD = utcToDate(r[4]);
     if (!startD) continue;
+    const endD = utcToDate(r[5]);
     visits.push({
       fos: r[10].trim().toLowerCase(),
       sm: (r[9] || "").trim().toLowerCase(),
       channel: (r[12] || "").trim() || "Other",
-      dealer: (r[16] || r[3] || "").trim(),
+      dealer: (r[2] || r[16] || r[3] || "").trim(),     // Column C — Dealership Name
+      dealerCode: (r[19] || "").trim(),                  // Column T — Dealership Code
       remark: (r[6] || "").trim(),
       status: (r[7] || "").trim(),
       start: startD,
-      end: utcToDate(r[5]),
+      end: endD,                                          // Column F — Check-Out
+      duration: durationMins(startD, endD),
       dateKey: istDateKey(startD),
       hour: istHour(startD)
     });
@@ -470,21 +515,12 @@ function renderCityBars(data) {
     <div class="br-val">${v}</div></div>`).join('');
 }
 
-// ════════════════════════════════════════════════════════════════
-// HEATMAP — MTD (1st of current month → today), live from VISITS_DATA
-// Automatically works for any month — no hardcoded dates
-// ════════════════════════════════════════════════════════════════
 function renderHeatmap(data) {
   const top = [...data].sort((a,b) => b.mtd - a.mtd).slice(0, 25);
-
-  // Build MTD date keys: "2026-05-01" ... "2026-05-04" (today)
   const mtdKeys = getMTDKeys();
   const monthName = currentMonthName();
-
-  // Update badge
   document.getElementById('heatmap-badge').textContent = `Top 25 · ${monthName} MTD`;
 
-  // Aggregate visit counts per FOS per date from live VISITS_DATA
   const visitCounts = {};
   VISITS_DATA.forEach(v => {
     if (!visitCounts[v.fos]) visitCounts[v.fos] = {};
@@ -536,25 +572,41 @@ function drawChart(id, type, data, extraOpts) {
   }, extraOpts || {})});
 }
 
-// ═══ TIMESTAMPS ═══
+// ════════════════════════════════════════════════════════════════
+// TIMESTAMPS — now shows dealer name, dealer code, check-in,
+// check-out, and visit duration for every visit on the selected day.
+// Search box also filters by dealer name / dealer code.
+// ════════════════════════════════════════════════════════════════
 function renderTimestamps() {
   const date = document.getElementById('ts-date').value || todayIST();
   const sm = document.getElementById('ts-sm').value;
   const ch = document.getElementById('ts-ch').value;
   const q = (document.getElementById('ts-q').value || '').toLowerCase();
 
+  // build base FOS map (filtered by SM, channel, search-against-FOS-email)
   const fosMap = {};
   FOS_DATA.forEach(f => {
     if ((sm && f.sm !== sm) || (ch && f.channel !== ch)) return;
-    if (q && !f.email.includes(q)) return;
     fosMap[f.email] = {info:f, visits:[]};
   });
+  // attach today's visits
   VISITS_DATA.filter(v => v.dateKey === date).forEach(v => {
     if (fosMap[v.fos]) fosMap[v.fos].visits.push(v);
   });
 
+  // Apply search (matches FOS email OR any dealer name/code on this date)
+  const fosKeys = Object.keys(fosMap).filter(email => {
+    if (!q) return true;
+    if (email.includes(q)) return true;
+    return fosMap[email].visits.some(v =>
+      (v.dealer && v.dealer.toLowerCase().includes(q)) ||
+      (v.dealerCode && v.dealerCode.toLowerCase().includes(q))
+    );
+  });
+
   let early = 0, mid = 0, late = 0;
-  const rows = Object.values(fosMap).map(x => {
+  const rows = fosKeys.map(email => {
+    const x = fosMap[email];
     x.visits.sort((a,b) => a.start - b.start);
     const first = x.visits[0];
     let cat = 'none';
@@ -572,6 +624,7 @@ function renderTimestamps() {
   document.getElementById('ts-late').textContent = late;
   document.getElementById('ts-cnt').textContent = rows.length + ' FOS';
 
+  // sort: FOS without visits first, then by latest first-visit time
   rows.sort((a,b) => {
     const hasA = a.first ? 1 : 0;
     const hasB = b.first ? 1 : 0;
@@ -582,17 +635,55 @@ function renderTimestamps() {
 
   document.getElementById('ts-bd').innerHTML = rows.map(x => {
     const f = x.info;
-    const firstTxt = x.first ? `<span class="t-${x.cat}">${formatIST(x.first.start)}</span>` : `<span class="t-none">No visit</span>`;
+
+    // First-visit cell: time + dealer name
+    let firstCell;
+    if (x.first) {
+      const dlr = escapeHTML(x.first.dealer || '—');
+      const code = x.first.dealerCode ? `<span class="fv-code">${escapeHTML(x.first.dealerCode)}</span>` : '';
+      firstCell = `<div class="fv-wrap">
+        <span class="t-${x.cat}">${formatIST(x.first.start)}</span>
+        <div class="fv-dlr" title="${dlr}">${dlr} ${code}</div>
+      </div>`;
+    } else {
+      firstCell = `<span class="t-none">No visit</span>`;
+    }
+
     const stat = x.cat === 'early' ? '✅ Early' : x.cat === 'mid' ? '🕙 Mid' : x.cat === 'late' ? '🔴 Late' : '⚫ No visit';
-    const pills = x.visits.map((v,i) => `<span class="ts-pill ${i===0?'first':''}" title="${v.dealer}">${formatIST(v.start)}</span>`).join('');
+
+    // Visit detail cards: dealer name + code, check-in → check-out, duration
+    const cards = x.visits.map((v, i) => {
+      const dealer = escapeHTML(v.dealer || 'Unknown dealer');
+      const code = v.dealerCode ? `<span class="vcard-code">${escapeHTML(v.dealerCode)}</span>` : '';
+      const checkIn = formatIST(v.start);
+      const checkOut = v.end
+        ? `<span>${formatIST(v.end)}</span>`
+        : `<span class="vcard-out-missing">no checkout</span>`;
+      const dur = v.duration != null
+        ? `<span class="vcard-dur">${formatDur(v.duration)}</span>`
+        : '';
+      return `<div class="vcard ${i === 0 ? 'first' : ''}" title="${dealer}${v.dealerCode ? ' · ' + escapeHTML(v.dealerCode) : ''}">
+        <div class="vcard-top">
+          <div class="vcard-dlr">${dealer}</div>
+          ${code}
+        </div>
+        <div class="vcard-times">
+          <span>${checkIn}</span>
+          <span class="vcard-arrow">→</span>
+          ${checkOut}
+          ${dur}
+        </div>
+      </div>`;
+    }).join('');
+
     return `<tr>
       <td style="font-weight:500">${f.email.split('@')[0]}</td>
       <td style="color:#64748b;font-size:11px">${(f.sm||'').split('@')[0]}</td>
       <td>${chipHTML(f.channel)}</td>
-      <td>${firstTxt}</td>
+      <td>${firstCell}</td>
       <td>${stat}</td>
       <td><span class="vb ${x.visits.length===0?'v0':x.visits.length<=2?'vl':x.visits.length<=4?'vm':'vg'}">${x.visits.length}</span></td>
-      <td>${pills || '<span style="color:#94a3b8;font-size:10px">—</span>'}</td>
+      <td class="visits-cell">${cards || '<span style="color:#94a3b8;font-size:10px">—</span>'}</td>
     </tr>`;
   }).join('');
 }
